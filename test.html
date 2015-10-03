@@ -1,0 +1,207 @@
+<script>
+//---------------------------------------------------------//
+// Poker                                             //
+//                                                         //
+// (c) Copyright by Vasian CEPA 2001. All rights reserved. //
+// email: vpcepa@yahoo.com                                 //
+//---------------------------------------------------------//
+</script>
+<title>poker() function test</title>
+
+<script src="poker.js"></script>
+<script src="objects.js"></script>
+
+<h2>poker() function test</h2>
+<hr>
+
+<script>
+var pcomb = new PokerCombinations();
+
+var testArray = new Array();
+var index = -1;
+
+// numrat ne rendin rrites 2,3,4,...10,11=J,12=Q,13=K,14=A
+// lulet 0=C,1=D,2=H,3=S
+
+// pair
+
+var tempCard0 = new Card(2, 0, null);
+var tempCard1 = new Card(2, 1, null);
+var tempCard2 = new Card(3, 2, null);
+var tempCard3 = new Card(4, 3, null);
+var tempCard4 = new Card(5, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(12, 1, null);
+tempCard2 = new Card(12, 2, null);
+tempCard3 = new Card(13, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(4, 1, null);
+tempCard2 = new Card(11, 2, null);
+tempCard3 = new Card(11, 3, null);
+tempCard4 = new Card(13, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(4, 1, null);
+tempCard2 = new Card(5, 2, null);
+tempCard3 = new Card(14, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// two pair 2+2
+
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(2, 1, null);
+tempCard2 = new Card(5, 2, null);
+tempCard3 = new Card(5, 3, null);
+tempCard4 = new Card(10, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(4, 0, null);
+tempCard1 = new Card(13, 1, null);
+tempCard2 = new Card(13, 2, null);
+tempCard3 = new Card(14, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(13, 2, null);
+tempCard3 = new Card(14, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// three 3
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(10, 2, null);
+tempCard3 = new Card(13, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(9, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(10, 2, null);
+tempCard3 = new Card(10, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(9, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(13, 2, null);
+tempCard3 = new Card(13, 3, null);
+tempCard4 = new Card(13, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// four 4
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(10, 2, null);
+tempCard3 = new Card(10, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(9, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(10, 2, null);
+tempCard3 = new Card(10, 3, null);
+tempCard4 = new Card(10, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// full house 3+2
+
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(10, 2, null);
+tempCard3 = new Card(14, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(10, 1, null);
+tempCard2 = new Card(14, 2, null);
+tempCard3 = new Card(14, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// straight
+
+tempCard0 = new Card(3, 0, null);
+tempCard1 = new Card(4, 1, null);
+tempCard2 = new Card(5, 2, null);
+tempCard3 = new Card(6, 3, null);
+tempCard4 = new Card(7, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(3, 1, null);
+tempCard2 = new Card(4, 2, null);
+tempCard3 = new Card(5, 3, null);
+tempCard4 = new Card(6, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(3, 1, null);
+tempCard2 = new Card(4, 2, null);
+tempCard3 = new Card(5, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(11, 1, null);
+tempCard2 = new Card(12, 2, null);
+tempCard3 = new Card(13, 3, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// flush
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(10, 0, null);
+tempCard2 = new Card(10, 0, null);
+tempCard3 = new Card(13, 0, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// straight flush
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(3, 0, null);
+tempCard2 = new Card(4, 0, null);
+tempCard3 = new Card(5, 0, null);
+tempCard4 = new Card(6, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// royal flush
+tempCard0 = new Card(10, 0, null);
+tempCard1 = new Card(11, 0, null);
+tempCard2 = new Card(12, 0, null);
+tempCard3 = new Card(13, 0, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+// teste shtese
+tempCard0 = new Card(2, 0, null);
+tempCard1 = new Card(3, 0, null);
+tempCard2 = new Card(4, 0, null);
+tempCard3 = new Card(5, 0, null);
+tempCard4 = new Card(14, 0, null);
+testArray[++index] = new Array(tempCard0, tempCard1, tempCard2, tempCard3, tempCard4);
+
+for(var i = 0; i < testArray.length; i++){
+	var result = poker(testArray[i]);
+	var ss = (result.combination != result.C_NONE) ? pcomb.combNames[result.combination] : "NONE";
+	document.write('<p> (' + i + ') ' + testArray[i] + ' - ' + ss + " (" + result.combination + ") [" + result.holdArray + "]" + " H---> " + result.highCard);
+}
+
+</script>
+
+<br><br>
+<hr>
+(c) 2001
+
+
+

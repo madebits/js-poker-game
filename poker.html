@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Poker</title>
+<meta name="author" content="Vasian CEPA">
+<style>
+h2,h3 {color: #0000ff;}
+</style>
+<script>
+//---------------------------------------------------------//
+// Poker                                             //
+//                                                         //
+// (c) Copyright by Vasian CEPA 2001. All rights reserved. //
+// email: vpcepa@yahoo.com                                 //
+//---------------------------------------------------------//
+function stopError() {
+  return true;
+}
+window.onerror = stopError;
+</script>
+<script src="poker.js"></script>
+<script src="objects.js"></script>
+<script src="points.js"></script>
+<script src="game.js"></script>
+
+<script>
+if (parent.frames[1])parent.location.href=self.location.href;
+var title = "Poker";
+document.title = title + " Please wait! Loading...";
+var settingsWindow = null;
+var utils = new Utils();
+var game = new GameLogic();
+game.init();
+document.title = title;
+</script>
+
+<script>
+// mediator script
+
+function checkHold(number, name){
+	game.checkHold(number, name);
+}
+function handleNext(){
+	game.handleNext();
+}
+function resetGame(){
+	game.reset();
+}
+
+function closeGame(){
+	hideSettings();
+}
+
+function incrementBet(){
+	game.incrementUserBet();
+}
+
+function decrementBet(){
+	game.decrementUserBet();
+}
+
+function hideSettings(){
+	if (settingsWindow && settingsWindow.open && !settingsWindow.closed) settingsWindow.close();
+}
+
+function showSettings(){
+	if(game.gameState.state == game.gameState.S_BLIND_BET){
+		settingsWindow = window.open("control1/control1.html","remotePanel","width=350,height=320,status=no,toolbar=no,menubar=no,alwaysRaised=yes,scrollbars=yes");
+		settingsWindow.focus();
+	} else {
+		alert("You can not take credit in the midle of a game!");
+	}
+}
+
+function right(e) { var msg = "Poker Game (c) Vasian Cepa 2001"; if (navigator.appName == 'Netscape' && e.which == 3) { alert(msg); return false; } else if (navigator.appName == 'Microsoft Internet Explorer' && event.button==2) { alert(msg); return false; } return true; } document.onmousedown = right;
+</script>
+</head>
+
+<body bgcolor="#ffffff" background="images/misc/bg-fallingcards.gif" onLoad="resetGame();" onUnload="closeGame();">
+
+<img src="images/logo/poker.gif" width="276" height="64" alt="Play Poker!">
+<form name="handForm" >
+
+<table cellpadding="6">
+<tr>
+	<td valign="top">
+	<script>
+	document.writeln('<h2><a href="javascript:game.about()"><img name="imgComp" src="images/misc/cface.gif" width="32" height="32" border="0" alt="About"></a> Computer\'s Hand</h2>');
+	game.compHand.draw();
+
+	document.write(utils.getBoxStart("#000000", "#87CEEB", "6"));
+	document.write('<div align="left"><font face="Courier New" size="-1"><b>Computer Bet:</b></font> <input type="text" name="txtCompBet" size="4" onFocus="this.blur();" value="1">');
+	document.write('&nbsp;&nbsp;<font face="Courier New" size="-1"><b>Action:</b></font> <input type="text" name="txtGameState" size="18" onFocus="this.blur();" value="Please wait! Loading..."></div>');
+	document.write(utils.getBoxEnd());
+
+	document.writeln('<h2><img name="imgUser" src="images/misc/uface.gif" width="32" height="32"> User\'s Hand</h2>');
+	game.userHand.draw();
+
+
+	</script>
+	</td>
+	<td valign="top">
+	<br><br>
+	<script>
+	document.writeln('<h3>User Hand Points\' Panel</h3>');
+	document.write(utils.getBoxStart("#000000", "#ffffff", "6"));
+	game.pCombinations.draw();
+	game.userPoints.draw();
+	document.write(utils.getBoxEnd());
+	</script>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+	<script>
+	game.buttons.draw();
+	</script>
+	</td>
+</tr>
+</table>
+
+</form>
+</body>
+</html>
+

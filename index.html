@@ -1,0 +1,36 @@
+<script>
+//---------------------------------------------------------//
+// Poker                                             //
+//                                                         //
+// (c) Copyright by Vasian CEPA 2001. All rights reserved. //
+// email: vpcepa@yahoo.com                                 //
+//---------------------------------------------------------//
+</script>
+<script>
+function stopError() {
+  return true;
+}
+window.onerror = stopError;
+var browser;
+browser = parseFloat(navigator.appVersion);
+function browserOk(){
+	if(browser >= 4.0)
+		return true;
+	return false;
+}
+</script>
+
+<p><a href="javascript:startGame()" style="text-decoration: none;"><font face="Courier New" size="+4"><b>Play Poker <-</b></font></a><br>
+Full online demo. Size: 108Kb. May take sometime to download localy.</p>
+
+<script>
+var pokerWindow = null;
+function startGame(){
+	if(browserOk()){
+		pokerWindow = window.open("poker.html","pokerWindow","width=700,height=600,status=yes,toolbar=no,menubar=no,alwaysRaised=yes,scrollbars=yes");
+		pokerWindow.focus();
+	} else {
+		alert("Your browser can not be used to play this game!\n\nPossible cause:\n\tversion lower than 4.0\n\tjava dissabled\n\tcookies not allowed");
+	}
+}
+</script>

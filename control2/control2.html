@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Poker Control Panel [Advanced]</title>
+<script>
+//---------------------------------------------------------//
+// Poker                                             //
+//                                                         //
+// (c) Copyright by Vasian CEPA 2001. All rights reserved. //
+// email: vpcepa@yahoo.com                                 //
+//---------------------------------------------------------//
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="init();">
+<form name="pointForm">
+<h3 style="color: #ff0000"><img name="imgComp" src="../images/misc/cface.gif" width="32" height="32" border="0">Computer Player Settings</h3>
+<input type=button value="Close Window" name=btnClose onClick="closeWin();">&nbsp;<input type=button value="Go Back" onClick="history.go(-1);">
+<hr>
+<table cellpadding="4">
+<tr><th valign="top">Combination</th><th valign="top">Parameter Name</th><th valign="top">Probability</th></tr>
+
+<tr><td bgcolor="#87CEEB" rowspan="2">Nothing</td><td bgcolor="#e1e1e1">FollowFirstBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb1" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">FollowSecontBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb2" value="" size="6"></td></tr>
+
+<tr><td bgcolor="#87CEEB" rowspan="2">Pair<br>Two Pair</td><td bgcolor="#e1e1e1">FollowFirstBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb3" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">FollowSecontBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb4" value="" size="6"></td></tr>
+
+<tr><td bgcolor="#87CEEB" rowspan="2">Three of a Kind<br>Straight<br>Flush</td><td bgcolor="#e1e1e1">FollowFirstBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb5" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">FollowSecontBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb6" value="" size="6"></td></tr>
+
+<tr><td bgcolor="#87CEEB" rowspan="2">Full House<br>Four of a Kind<br>Straight Flush<br>Royal Flush</td><td bgcolor="#e1e1e1">FollowFirstBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb7" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">FollowSecontBet</td><td bgcolor="#ffff80"><input type="text" name="txtProb8" value="" size="6"></td></tr>
+
+
+<tr><td bgcolor="#ff8000" rowspan="2">Four of a Kind<br>Straight Flush<br>Royal Flush</td><td bgcolor="#e1e1e1">AddBet2</td><td bgcolor="#ffff80"><input type="text" name="txtProb9" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">AddBet3</td><td bgcolor="#ffff80"><input type="text" name="txtProb10" value="" size="6"></td></tr>
+
+<tr><td bgcolor="#ff8000" rowspan="2">Straight<br>Flush<br>Full House</td><td bgcolor="#e1e1e1">AddBet2</td><td bgcolor="#ffff80"><input type="text" name="txtProb11" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">AddBet3</td><td bgcolor="#ffff80"><input type="text" name="txtProb12" value="" size="6"></td></tr>
+
+<tr><td bgcolor="#ff8000" rowspan="2">Nothing<br>Pair<br>Two Pair<br>Three of a Kind</td><td bgcolor="#e1e1e1">AddBet2</td><td bgcolor="#ffff80"><input type="text" name="txtProb13" value="" size="6"></td></tr>
+<tr><td bgcolor="#e1e1e1">AddBet3</td><td bgcolor="#ffff80"><input type="text" name="txtProb14" value="" size="6"></td></tr>
+</table>
+<hr>
+<input type=button value="Default Points" onClick="setDefaults();">&nbsp;<input type=button value="Save" onClick="save();">
+<hr>
+<input type=button value="Delete Game History" onClick="deleteHistory();">
+</form>
+
+<font color="#ff8000" size="-1">
+<p>
+These settings affect Computer Player simulation during the game!
+</p>
+</font>
+<p><font size="-2">This page should be http password protected!!!</font></p>
+</body>
+</html>
+<script>
+function writeNSDecPointNumber(aNumber){// corrects a Netscape 4 bug that prints 0.5 as .5
+	var s = new String(aNumber);
+	if(s.indexOf(".") == 0) s = "0" + s;
+	return s;
+}
+
+function init(){
+	var s = window.opener.game.points.prob;
+	var values = new String(s.toString()).split(s.separator);
+	for(var i = 1; i <= 14; i++){
+		document.forms["pointForm"].elements["txtProb"+ i].value = writeNSDecPointNumber(parseFloat(values[i-1]));
+	}
+}
+
+function save(){
+	var index = 0;
+	var s = window.opener.game.points.prob;
+
+	var aStr = "";
+	for(var i = 1; i <=14; i++){
+		aStr += document.forms["pointForm"].elements["txtProb"+ i].value + s.separator;
+	}
+	//alert(aStr);
+	s.fromString(aStr);
+	window.opener.game.points.serialize();
+}
+
+function setDefaults(){
+	var prob = window.opener.DEFAULT_PROBS; // this has the default values
+	var values = new String(prob.toString()).split(prob.separator);
+	for(var i = 1; i <= 14; i++){
+		document.forms["pointForm"].elements["txtProb"+ i].value = writeNSDecPointNumber(parseFloat(values[i-1]));
+	}
+}
+
+function closeWin(){
+	close();
+}
+
+function deleteHistory(){
+	var c = confirm("You are about to delete Game history!!!\nAll stored data will be set to default values!\n\nAre you sure you want to do this?");
+	if(c){
+		window.opener.game.points.deleteCookie();
+		window.opener.resetGame();
+		close();
+	}
+}
+</script>

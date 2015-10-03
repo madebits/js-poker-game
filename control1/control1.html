@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Poker Control Panel</title>
+<script>
+//---------------------------------------------------------//
+// Poker                                             //
+//                                                         //
+// (c) Copyright by Vasian CEPA 2001. All rights reserved. //
+// email: vpcepa@yahoo.com                                 //
+//---------------------------------------------------------//
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="init();">
+<h3 style="color: #ff0000">Poker Settings</h3>
+<form name=controlForm>
+<input type=button value="Close Window" name=btnClose onClick="closeWin();">&nbsp;<input type=button value="About" name=btnAbout onClick="aboutPoker();">
+<hr>
+<script>document.write(window.opener.utils.getBoxStart("#000000", "#87CEEB", "2"));</script>
+<table width="100%"><tr><td align="left"><b>New User Credit: &nbsp;</b><input type text name=txtCredit size="6">&nbsp;<input type=button value="Save" name=btnSave onClick="setNewCredit();"> <img name="imgUser" src="../images/misc/uface-happy.gif" width="32" height="32"></td></tr></table>
+<script>document.write(window.opener.utils.getBoxEnd());</script>
+<hr>
+<input type="button" name="btnReset" value="Reset Game" onClick="resetGame();">&nbsp;<input type=button value="Advanced Settings" name=btnClose onClick="showAdvanced();">
+<hr>
+<font color="red">Computer Credit: </font><script>document.write(window.opener.game.points.compCredit);</script>
+</form>
+<font color="#ff8000" size="-2">
+<p><b>Game Settings Access Policy:</b><br>
+<br>-Every user can change (his/her) {Bet}
+<br>-Only suppervisor can change {Credit}
+<br>-Only casino owner can change {Advanced Settings}
+</p>
+</font>
+<p><font size="-2">This page should be http password protected!!!</font></p>
+</body>
+</html>
+<script>
+function init(){
+	document.controlForm.txtCredit.value = window.opener.document.handForm.txtUserCredit.value;
+}
+
+function setNewCredit(){
+	window.opener.game.points.setUserCredit(document.controlForm.txtCredit.value);
+	close();
+}
+
+function resetGame(){
+	window.opener.resetGame();
+	close();
+}
+
+function closeWin(){
+	close();
+}
+
+function aboutPoker(){
+	window.opener.game.about();
+	focus();
+	document.controlForm.btnAbout.focus();
+}
+
+function showAdvanced(){
+	location.href="../control2/control2.html";
+}
+
+</script>
+
