@@ -2,7 +2,7 @@
 // Poker                                             //
 //                                                         //
 // (c) Copyright by Vasian CEPA 2001. All rights reserved. // 
-// email: vpcepa@yahoo.com                                 //
+// email: @                                 //
 //---------------------------------------------------------//
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -334,7 +334,7 @@ function GameLogic_decrementUserBet(){
 //------------------------------------------
 
 function GameLogic_about(){
-	alert("V-Web Poker\n\n(c) - Copyright 2001 by Vasian CEPA\nvpcepa@yahoo.com");
+	alert("V-Web Poker\n\n(c) - Copyright 2001 by Vasian CEPA\n@");
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -2,7 +2,7 @@
 // Poker                                             //
 //                                                         //
 // (c) Copyright by Vasian CEPA 2001. All rights reserved. // 
-// email: vpcepa@yahoo.com                                 //
+// email: @                                 //
 //---------------------------------------------------------//
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,7 +121,7 @@ function Points_changeCreditWith(delta){
 
 function Points_gameOver(){
 	if(this.userCredit < this.userBet){
-		alert("\t!!! GAME OVER !!!\n\n\t(Credit lower than bet!)\n\n\n  $$$---> ENTER NEW CREDIT! <---$$$\n\n--------------------------\nV-Web Poker (c) - 2001 by Vasian CEPA.\nvpcepa@yahoo.com");
+		alert("\t!!! GAME OVER !!!\n\n\t(Credit lower than bet!)\n\n\n  $$$---> ENTER NEW CREDIT! <---$$$\n\n--------------------------\nV-Web Poker (c) - 2001 by Vasian CEPA.\n@");
 		return true;
 	} 
 	return false;
